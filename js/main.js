@@ -118,6 +118,9 @@
   }
 
   function buildFooter() {
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const igDmHref = isMobile ? S.instagramDmMobile : S.instagramDm;
+    const fbDmHref = isMobile ? S.facebookDmMobile : S.facebookDm;
     const f = document.createElement('footer');
     f.className = 'footer';
     f.innerHTML = `
@@ -164,8 +167,8 @@
             <ul>
               <li><a href="/about.html">Our story</a></li>
               <li><a href="/order.html">How to order</a></li>
-              <li><a href="${S.instagramDm}" target="_blank" rel="noopener" class="social-link">${igIcon}Instagram — DM to order</a></li>
-              <li><a href="${S.facebookDm}" target="_blank" rel="noopener" class="social-link">${fbIcon}Facebook — DM to order</a></li>
+              <li><a href="${igDmHref}" target="_blank" rel="noopener" class="social-link">${igIcon}Instagram — DM to order</a></li>
+              <li><a href="${fbDmHref}" target="_blank" rel="noopener" class="social-link">${fbIcon}Facebook — DM to order</a></li>
             </ul>
           </div>
         </div>

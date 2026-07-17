@@ -70,19 +70,38 @@
     /* the note is copied to the clipboard, then the chat thread itself opens
        (deep-linking into the app on phones) — Instagram and Messenger don't
        allow outside sites to pre-fill a message, so pasting is the one step
-       left for the customer */
-    document.getElementById('btn-ig').addEventListener('click', async () => {
+       left for the customer.
+
+       the window MUST open synchronously inside the click handler — any
+       await or setTimeout before window.open() breaks the browser's "this
+       came from a direct user gesture" check, and mobile browsers silently
+       block it as a popup. copyNote() runs after, into the already-open tab. */
+    async function openDm(desktopUrl, mobileUrl, profileUrl, platformLabel) {
       if (!validate()) return;
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const target = isMobile ? mobileUrl : desktopUrl;
+
+      const win = window.open('', '_blank', 'noopener');
+      if (!win) {
+        /* popup blocked — try once more, landing on the profile page instead
+           of the DM thread, so they can at least reach us that way */
+        const fallback = window.open(profileUrl, '_blank', 'noopener');
+        if (!fallback) BJToast(`Please open ${platformLabel} to message us — pop-ups are blocked.`, '앗!');
+        return;
+      }
+      try { win.opener = null; } catch {}
+      win.location.href = target;
+
       const copied = await copyNote();
       BJToast(copied ? 'Note copied! Opening our chat — just paste it in.' : 'Could not copy — please copy the note above manually.', copied ? '복사 완료!' : '앗!');
-      setTimeout(() => window.open(S.instagramDm, '_blank', 'noopener'), 900);
+    }
+
+    document.getElementById('btn-ig').addEventListener('click', () => {
+      openDm(S.instagramDm, S.instagramDmMobile, `https://instagram.com/${S.instagram}`, 'Instagram');
     });
 
-    document.getElementById('btn-fb').addEventListener('click', async () => {
-      if (!validate()) return;
-      const copied = await copyNote();
-      BJToast(copied ? 'Note copied! Opening our chat — just paste it in.' : 'Could not copy — please copy the note above manually.', copied ? '복사 완료!' : '앗!');
-      setTimeout(() => window.open(S.facebookDm, '_blank', 'noopener'), 900);
+    document.getElementById('btn-fb').addEventListener('click', () => {
+      openDm(S.facebookDm, S.facebookDmMobile, `https://facebook.com/${S.facebook}`, 'Facebook');
     });
   });
 })();

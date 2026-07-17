@@ -1,13 +1,15 @@
 /* Banchan Jib — product catalogue + business settings */
 
 window.BJ_SETTINGS = {
-  instagram: 'banchan_jib.bd',       // instagram.com/<handle> — profile links
-  facebook: 'BanchanJib',            // facebook.com/<page> — profile links
-  /* direct chat threads — used by every "DM to order" action.
-     these open the conversation itself (and deep-link into the
-     Instagram / Messenger apps on phones that have them) */
+  instagram: 'banchan_jib.bd',       // instagram.com/<handle> — profile links, and the mobile-web fallback
+  facebook: 'BanchanJib',            // facebook.com/<page> — profile links, and the mobile-web fallback
+  /* "DM to order" actions — desktop opens the exact saved conversation;
+     mobile uses the short ig.me/m.me links, which the OS intercepts and
+     hands straight to the Instagram/Messenger app if it's installed */
   instagramDm: 'https://www.instagram.com/direct/t/18039855581611708/',
+  instagramDmMobile: 'https://ig.me/m/banchan_jib.bd',
   facebookDm: 'https://www.facebook.com/messages/t/1172401489295992',
+  facebookDmMobile: 'https://m.me/BanchanJib',
   currency: 'BDT',
   tagline: 'Comfort in Every Side Dish',
 };
