@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reserve Your Batch · Banchan Jib 반찬집</title>
+  <meta name="description" content="Review your basket and reserve this week's batch of homemade Korean side dishes — order by Instagram DM or Facebook Messenger.">
+  <link rel="icon" href="/assets/logo/icon.svg">
+  <link rel="stylesheet" href="/css/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="/js/data.js"></script>
+  <script defer src="/js/cart.js"></script>
+  <script defer src="/js/game.js"></script>
+  <script defer src="/js/halmeoni.js"></script>
+  <script defer src="/js/halmeoni-drag.js"></script>
+  <script defer src="/js/main.js"></script>
+  <script defer src="/js/order.js"></script>
+</head>
+<body>
+<main class="page">
+
+  <section class="order-wrap section" data-doodles="4">
+    <div class="container">
+      <div class="sec-head" data-reveal>
+        <span class="sec-eyebrow">주문 · reserve your batch</span>
+        <h2 class="sec-title" style="font-size:clamp(2.2rem,5vw,3.6rem)">Almost at the <em>table</em></h2>
+        <p class="sec-sub">We take orders through Instagram or Facebook DM — tell us your details below and we'll prepare a ready-to-send order note for you.</p>
+      </div>
+
+      <div class="order-grid">
+        <!-- ── basket review ── -->
+        <div class="order-panel" data-reveal>
+          <h2>Your basket <span class="kr" style="font-size:.85rem;color:var(--seaweed)">바구니</span></h2>
+          <div class="cart-items" style="padding:0"></div>
+          <ul class="order-summary-list mt-2" id="order-summary"></ul>
+          <a href="/menu.html" class="btn btn-sage" style="width:100%">← Add more from the menu</a>
+        </div>
+
+        <!-- ── details + DM ── -->
+        <div class="order-panel" data-reveal>
+          <div style="display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem">
+            <div class="halmeoni-inline" data-halmeoni="delivering" style="width:56px;flex:none" aria-hidden="true"></div>
+            <h2 style="margin:0">Delivery details</h2>
+          </div>
+          <form id="order-form" novalidate>
+            <div class="field">
+              <label for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required>
+              <p class="err">Please tell us your name, so we know whose batch this is.</p>
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone number <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required>
+              <p class="hint">So the delivery rider can reach you.</p>
+              <p class="err">A phone number helps the rider find you — please add one.</p>
+            </div>
+            <div class="field">
+              <label for="f-area">Delivery area <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-area" name="area" type="text" placeholder="e.g. Dhanmondi, Dhaka" required>
+              <p class="err">Please tell us where the food is headed.</p>
+            </div>
+            <div class="field">
+              <label for="f-note">Anything we should know?</label>
+              <textarea id="f-note" name="note" rows="2" placeholder="Less spicy, please… / leave at the gate…"></textarea>
+            </div>
+          </form>
+
+          <div class="dm-preview" id="dm-preview" aria-live="polite"></div>
+
+          <div class="order-actions">
+            <button class="btn btn-primary" id="btn-ig" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="19" height="19"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>Copy note &amp; open Instagram DM</button>
+            <button class="btn btn-outline" id="btn-fb" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="19" height="19"><path d="M17 3h-3a5 5 0 0 0-5 5v3H6v4h3v9h4v-9h3l1-4h-4V8a1 1 0 0 1 1-1h3Z"/></svg>Send via Facebook Messenger instead</button>
+            <p class="hint" style="font-family:var(--menu);font-size:.8rem;color:var(--stone);text-align:center">Paste the note in our DM — we'll confirm your batch and delivery day. 금방 갈게요!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ribbon ribbon-sage" data-items="고마워요 · thank you|Fresh batches every week|밥 잘 챙겨 드세요|Comfort in Every Side Dish"></div>
+
+</main>
+</body>
+</html>

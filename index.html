@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Banchan Jib 반찬집 — Comfort in Every Side Dish</title>
+  <meta name="description" content="Authentic homemade Korean side dishes in Bangladesh. Fresh batches of kimchi, namul and more — made with care, like a grandmother next door.">
+  <link rel="icon" href="/assets/logo/icon.svg">
+  <link rel="stylesheet" href="/css/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="/js/data.js"></script>
+  <script defer src="/js/cart.js"></script>
+  <script defer src="/js/game.js"></script>
+  <script defer src="/js/halmeoni.js"></script>
+  <script defer src="/js/halmeoni-drag.js"></script>
+  <script defer src="/js/main.js"></script>
+  <script defer src="/js/home.js"></script>
+  <script defer src="/js/hero-stickers.js"></script>
+</head>
+<body>
+<main class="page">
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero" data-doodles="5">
+    <div class="hero-plates" aria-hidden="true">
+      <div class="hero-plate p1" data-depth="0.9"><img src="/assets/img/geotjeori-sm.jpg" alt=""></div>
+      <div class="hero-plate p2" data-depth="0.5"><img src="/assets/img/dangeun-sm.jpg" alt=""></div>
+      <div class="hero-plate p3" data-depth="0.7"><img src="/assets/img/shigeumchi-sm.jpg" alt=""></div>
+      <div class="hero-plate p4" data-depth="1.1"><img src="/assets/img/trio-sm.jpg" alt=""></div>
+    </div>
+    <div class="hero-inner container">
+      <div class="hero-icon">
+        <svg class="steam" viewBox="0 0 60 80" aria-hidden="true">
+          <path d="M20 75 C14 60, 26 55, 20 40 C14 25, 26 20, 22 5"/>
+          <path d="M40 75 C34 60, 46 55, 40 40 C34 25, 46 20, 42 5"/>
+        </svg>
+        <img src="/assets/logo/icon.svg" alt="Banchan Jib logo — 반찬집">
+      </div>
+      <p class="hero-kr">반찬집 · side dish house</p>
+      <h1 class="hero-title" data-split>
+        <span class="line">Comfort in</span>
+        <span class="line"><em>every</em> side dish</span>
+      </h1>
+      <p class="hero-sub">Homemade Korean side dishes, made in small weekly batches in Bangladesh — like a caring grandmother lives next door.</p>
+      <div class="hero-ctas">
+        <a href="/menu.html" class="btn btn-primary">See this week's batch</a>
+        <a href="/about.html" class="btn btn-outline">Meet the house</a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true"><span>scroll</span><span class="chop"></span></div>
+  </section>
+
+  <!-- ═══════════ RIBBON ═══════════ -->
+  <div class="ribbon" data-items="Banchan Jib|반찬집|Comfort in Every Side Dish|정성|Homemade in Bangladesh|맛있게 드세요"></div>
+
+  <!-- ═══════════ INTRO ═══════════ -->
+  <section class="section" data-doodles="3">
+    <div class="container">
+      <div class="sec-head" data-reveal>
+        <span class="sec-eyebrow">what is banchan?</span>
+        <h2 class="sec-title">Small dishes, <span class="kr-serif">정</span> big feelings</h2>
+        <p class="sec-sub">In Korea, no meal is served alone. Little plates of <em>banchan</em> — kimchi, seasoned greens, sweet roots — crowd around your rice like old friends. We make them fresh each week, so your busiest days still taste like someone cares. That feeling has a name: <b>정 (jeong)</b>.</p>
+      </div>
+      <div class="value-grid" data-reveal="stagger">
+        <div class="flip" tabindex="0" role="button" aria-label="Comfort — flip for more">
+          <div class="flip-inner">
+            <div class="flip-face flip-front"><span class="kr">위로</span><h3>Comfort</h3></div>
+            <div class="flip-face flip-back"><p>Food that feels like a warm hug on the days you've been bottling everything up.</p></div>
+          </div>
+        </div>
+        <div class="flip" tabindex="0" role="button" aria-label="Care — flip for more">
+          <div class="flip-inner">
+            <div class="flip-face flip-front"><span class="kr">정성</span><h3>Care</h3></div>
+            <div class="flip-face flip-back"><p>Every cup is seasoned by hand, tasted, and packed like it's going to family.</p></div>
+          </div>
+        </div>
+        <div class="flip" tabindex="0" role="button" aria-label="Honesty — flip for more">
+          <div class="flip-inner">
+            <div class="flip-face flip-front"><span class="kr">진심</span><h3>Honesty</h3></div>
+            <div class="flip-face flip-back"><p>Carefully selected local ingredients, small batches, no shortcuts, no fuss.</p></div>
+          </div>
+        </div>
+        <div class="flip" tabindex="0" role="button" aria-label="Home — flip for more">
+          <div class="flip-inner">
+            <div class="flip-face flip-front"><span class="kr">집</span><h3>Home</h3></div>
+            <div class="flip-face flip-back"><p>A little taste of Korea, delivered to your table in Bangladesh.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PINNED WEEK'S BATCH ═══════════ -->
+  <section class="pin-week" id="weeks-batch">
+    <div class="pin-stage">
+      <div class="week-track">
+        <div class="week-intro">
+          <span class="sec-eyebrow">이번 주 반찬 · this week</span>
+          <h2 class="sec-title">Fresh batches are ready for this week's orders</h2>
+          <p class="sec-sub" style="margin-bottom:1.5rem">We keep the menu intentionally small — so every cup is fresh. Slide along the table →</p>
+          <a href="/menu.html" class="btn btn-outline" style="align-self:flex-start">Full menu</a>
+        </div>
+        <!-- dish cards injected by home.js from data.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ RIBBON 2 ═══════════ -->
+  <div class="ribbon ribbon-sage" data-reverse data-items="겉절이 · Fresh Kimchi|당근나물 · Seasoned Carrots|시금치나물 · Seasoned Spinach|반찬 세트 · The Trio"></div>
+
+  <!-- ═══════════ GRANNY LETTER ═══════════ -->
+  <section class="section" data-doodles="4">
+    <div class="container">
+      <div class="sec-head" data-reveal>
+        <span class="sec-eyebrow">a note in every bag</span>
+        <h2 class="sec-title">From our kitchen, <em>to yours</em></h2>
+      </div>
+      <div class="letter-wrap" style="position:relative">
+        <div class="halmeoni-inline" data-halmeoni="heart" style="position:absolute;width:min(120px,20vw);top:-46px;right:-18px;transform:rotate(9deg);z-index:2" aria-hidden="true"></div>
+        <div class="letter" data-letter>
+          <p>Make sure you eat well before heading out, okay? I made too much again — the geotjeori is a little spicy this week, so have it with something warm.</p>
+          <p style="margin-top:35px">This freshly-made batch is only for you. Eat well, stay healthy, and conquer your day. <span class="kr-note">밥 잘 챙겨 먹어요, 알았죠?</span></p>
+          <p class="sign">— Banchan Jib, your side dish house</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ BIG QUOTE ═══════════ -->
+  <section class="big-quote" data-doodles="2">
+    <div class="container" data-reveal>
+      <blockquote>“Everyone deserves a comforting meal — even on their busiest days.”</blockquote>
+      <p class="who">우리의 약속 · our promise</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ CTA ═══════════ -->
+  <section class="section center" data-doodles="3">
+    <div class="container" data-reveal>
+      <h2 class="sec-title">Hungry already?</h2>
+      <p class="sec-sub" style="margin-bottom:2rem">We've prepared a small batch for this week. Reserve yours before they're gone.</p>
+      <a href="/menu.html" class="btn btn-primary" style="font-size:1.1rem;padding:1.1rem 2.6rem">Open the menu · 반찬 보기</a>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
