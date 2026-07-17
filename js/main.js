@@ -164,8 +164,8 @@
             <ul>
               <li><a href="/about.html">Our story</a></li>
               <li><a href="/order.html">How to order</a></li>
-              <li><a href="https://instagram.com/${S.instagram}" target="_blank" rel="noopener" class="social-link">${igIcon}Instagram — DM to order</a></li>
-              <li><a href="https://facebook.com/${S.facebook}" target="_blank" rel="noopener" class="social-link">${fbIcon}Facebook — DM to order</a></li>
+              <li><a href="${S.instagramDm}" target="_blank" rel="noopener" class="social-link">${igIcon}Instagram — DM to order</a></li>
+              <li><a href="${S.facebookDm}" target="_blank" rel="noopener" class="social-link">${fbIcon}Facebook — DM to order</a></li>
             </ul>
           </div>
         </div>

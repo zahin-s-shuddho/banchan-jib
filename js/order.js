@@ -67,18 +67,22 @@
     document.addEventListener('bj:cart', renderSummary);
     document.getElementById('order-form').addEventListener('input', renderSummary);
 
+    /* the note is copied to the clipboard, then the chat thread itself opens
+       (deep-linking into the app on phones) — Instagram and Messenger don't
+       allow outside sites to pre-fill a message, so pasting is the one step
+       left for the customer */
     document.getElementById('btn-ig').addEventListener('click', async () => {
       if (!validate()) return;
       const copied = await copyNote();
-      BJToast(copied ? 'Order note copied! Paste it in our Instagram DM.' : 'Could not copy — please copy the note above manually.', copied ? '복사 완료!' : '앗!');
-      setTimeout(() => window.open(`https://ig.me/m/${S.instagram}`, '_blank', 'noopener'), 900);
+      BJToast(copied ? 'Note copied! Opening our chat — just paste it in.' : 'Could not copy — please copy the note above manually.', copied ? '복사 완료!' : '앗!');
+      setTimeout(() => window.open(S.instagramDm, '_blank', 'noopener'), 900);
     });
 
     document.getElementById('btn-fb').addEventListener('click', async () => {
       if (!validate()) return;
       const copied = await copyNote();
-      BJToast(copied ? 'Order note copied! Paste it in our Facebook DM.' : 'Could not copy — please copy the note above manually.', copied ? '복사 완료!' : '앗!');
-      setTimeout(() => window.open(`https://m.me/${S.facebook}`, '_blank', 'noopener'), 900);
+      BJToast(copied ? 'Note copied! Opening our chat — just paste it in.' : 'Could not copy — please copy the note above manually.', copied ? '복사 완료!' : '앗!');
+      setTimeout(() => window.open(S.facebookDm, '_blank', 'noopener'), 900);
     });
   });
 })();
