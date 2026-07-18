@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photo Studio · Banchan Jib</title>
+<style>
+  :root { --brown:#5A3E2B; --cream:#F6F0E7; --sage:#a8b69a; --kimchi:#8b1400; --ink:#e9e2d4; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:#2b241d; color:var(--ink); font-family:'Segoe UI',system-ui,sans-serif; }
+  header { padding:18px 24px; background:#211b15; border-bottom:2px solid var(--sage); display:flex; align-items:center; gap:16px; flex-wrap:wrap; position:sticky; top:0; z-index:10; }
+  header h1 { font-size:1.2rem; margin:0; color:var(--cream); }
+  header .hint { font-size:.82rem; color:#b6ab97; }
+  header .save-all { margin-left:auto; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr)); gap:22px; padding:24px; }
+  .card { background:#211b15; border:1px solid #3a3128; border-radius:16px; padding:16px; }
+  .card h2 { margin:0 0 4px; font-size:1.05rem; color:var(--cream); }
+  .card .sub { font-size:.78rem; color:#9c9081; margin-bottom:12px; }
+  .stage { position:relative; width:100%; aspect-ratio:1; background:#000; border-radius:12px; overflow:hidden; touch-action:none; cursor:grab; }
+  .stage.grabbing { cursor:grabbing; }
+  .stage canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .controls { display:flex; align-items:center; gap:10px; margin-top:14px; }
+  .controls label { font-size:.8rem; color:#b6ab97; min-width:44px; }
+  .controls input[type=range] { flex:1; accent-color:var(--sage); }
+  .zoomval { font-variant-numeric:tabular-nums; font-size:.8rem; min-width:42px; text-align:right; color:#cfc4b2; }
+  .btnrow { display:flex; gap:8px; margin-top:12px; }
+  button { font:inherit; border:none; border-radius:9px; padding:9px 14px; cursor:pointer; font-size:.85rem; font-weight:600; transition:filter .15s, transform .1s; }
+  button:active { transform:translateY(1px); }
+  .btn-save { background:var(--kimchi); color:#fff4ec; flex:1; }
+  .btn-reset { background:#3a3128; color:#d8cdba; }
+  .btn-save:hover, .btn-reset:hover { filter:brightness(1.12); }
+  .save-all { background:var(--sage); color:#241c14; padding:10px 18px; }
+  .status { font-size:.78rem; margin-top:8px; min-height:1.1em; color:#8fb58f; }
+  .status.err { color:#e6957f; }
+  .legend { font-size:.72rem; color:#8a7f70; margin-top:6px; line-height:1.5; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📷 Photo Studio</h1>
+  <span class="hint">Drag to reposition · scroll or slider to zoom · the circle shows what appears on the site</span>
+  <button class="save-all" id="save-all">Save all four</button>
+</header>
+<div class="grid" id="grid"></div>
+<script src="/studio/studio.js"></script>
+</body>
+</html>
