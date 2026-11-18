@@ -1,0 +1,4 @@
+Textures from ambientCG (https://ambientcg.com), licensed CC0 1.0 Universal (public domain).
+paper.jpg       - Paper001 (https://ambientcg.com/view?id=Paper001), colour map, tinted cream
+wood-maple.jpg  - Wood095  (https://ambientcg.com/view?id=Wood095), colour map
+wood-walnut.jpg - Wood049  (https://ambientcg.com/view?id=Wood049), colour map

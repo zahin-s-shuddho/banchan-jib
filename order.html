@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reserve Your Batch · Banchan Jib 반찬집</title>
   <meta name="description" content="Review your basket and reserve this week's batch of homemade Korean side dishes — order by Instagram DM or Facebook Messenger.">
-  <link rel="icon" href="/assets/logo/icon.svg">
+  <link rel="stylesheet" href="/js/vendor/drawably/style.css">
   <link rel="stylesheet" href="/css/style.css">
   <script>document.documentElement.classList.add('js')</script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -17,6 +20,7 @@
   <script defer src="/js/halmeoni-drag.js"></script>
   <script defer src="/js/main.js"></script>
   <script defer src="/js/order.js"></script>
+  <script type="module" src="/js/drawn.js"></script>
 </head>
 <body>
 <main class="page">
@@ -24,9 +28,14 @@
   <section class="order-wrap section" data-doodles="4">
     <div class="container">
       <div class="sec-head" data-reveal>
-        <span class="sec-eyebrow">주문 · reserve your batch</span>
-        <h2 class="sec-title" style="font-size:clamp(2.2rem,5vw,3.6rem)">Almost at the <em>table</em></h2>
-        <p class="sec-sub">We take orders through Instagram or Facebook DM — tell us your details below and we'll prepare a ready-to-send order note for you.</p>
+        <span class="sec-eyebrow">주문 · how to order</span>
+        <h1 class="page-title">Almost at the <em>table</em></h1>
+        <p class="sec-sub">We take orders by Instagram or Facebook DM. Fill in your details and we write the order note for you.</p>
+        <ol class="order-how" style="margin-top:2rem">
+          <li><span><b>Check your basket</b> and your details below.</span></li>
+          <li><span><b>Tap send.</b> We copy the note and open our chat. Paste it in.</span></li>
+          <li><span><b>We reply</b> to confirm your total and delivery day. We deliver in Bangladesh.</span></li>
+        </ol>
       </div>
 
       <div class="order-grid">
@@ -79,7 +88,6 @@
     </div>
   </section>
 
-  <div class="ribbon ribbon-sage" data-items="고마워요 · thank you|Fresh batches every week|밥 잘 챙겨 드세요|Comfort in Every Side Dish"></div>
 
 </main>
 </body>

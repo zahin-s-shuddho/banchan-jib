@@ -18,11 +18,12 @@ window.BJ_PRODUCTS = [
   {
     id: 'geotjeori',
     slug: 'geotjeori',
-    name: 'Geotjeori Cup',
-    sub: 'Fresh Cabbage Kimchi',
+    name: 'Kimchi Cup',
+    sub: 'Geotjeori · fresh cabbage kimchi',
     kr: '겉절이',
     krRead: 'geot-jeo-ri',
     price: 80,
+    priceSolo: 120,
     img: '/assets/img/geotjeori.jpg',
     imgSm: '/assets/img/geotjeori-sm.jpg',
     short: 'Crunchy, spicy, and garlic heavy — the perfect sidekick for a steaming hot bowl of ramen!',
@@ -37,11 +38,12 @@ window.BJ_PRODUCTS = [
   {
     id: 'dangeun',
     slug: 'dangeun-namul',
-    name: 'Dangeun Namul Cup',
-    sub: 'Seasoned Carrots',
+    name: 'Seasoned Carrot Cup',
+    sub: 'Dangeun namul',
     kr: '당근나물',
     krRead: 'dang-geun na-mul',
     price: 70,
+    priceSolo: 100,
     img: '/assets/img/dangeun.jpg',
     imgSm: '/assets/img/dangeun-sm.jpg',
     short: 'Sweet, earthy, toasted sesame. Brings a delightful crunch to any food!',
@@ -56,11 +58,12 @@ window.BJ_PRODUCTS = [
   {
     id: 'shigeumchi',
     slug: 'shigeumchi-namul',
-    name: 'Shigeumchi Namul Cup',
-    sub: 'Seasoned Spinach',
+    name: 'Seasoned Spinach Cup',
+    sub: 'Shigeumchi namul',
     kr: '시금치나물',
     krRead: 'shi-geum-chi na-mul',
     price: 100,
+    priceSolo: 140,
     img: '/assets/img/shigeumchi.jpg',
     imgSm: '/assets/img/shigeumchi-sm.jpg',
     short: 'Savoury, nutty, sesame-infused. Pair it with warm rice and our Geotjeori for a hearty meal!',
@@ -75,11 +78,12 @@ window.BJ_PRODUCTS = [
   {
     id: 'trio',
     slug: 'banchan-trio',
-    name: 'The Banchan Trio',
+    name: 'Banchan Trio',
     sub: '3-Cup Bundle Set',
     kr: '반찬 세트',
     krRead: 'banchan se-teu',
     price: 220,
+    priceSolo: 250,
     img: '/assets/img/trio.jpg',
     imgSm: '/assets/img/trio-sm.jpg',
     short: 'Not sure which one to order yet? Get the best of all three with our 3-cup bundle pack!',
@@ -93,4 +97,29 @@ window.BJ_PRODUCTS = [
   },
 ];
 
+/* ── The official menu, 1:1 with the menu posted on Instagram (Sept 2026) ──
+   Banchan come in two sizes: "with main" (80g, the price above) and "solo" (150g, priceSolo). */
+window.BJ_MENU = {
+  mains: [
+    { id: 'bulgogi-bowl', name: 'Beef bulgogi rice bowl', kr: '불고기 덮밥', price: 750,
+      desc: 'Juicy, savoury, and slightly spicy beef meets warm sticky rice for the ultimate dramatic flair.',
+      img: '/assets/ig/bulgogi-rice-bowl.jpg', imgSm: '/assets/ig/main-bulgogi-sm.jpg' },
+    { id: 'kimchi-aglio', name: 'Kimchi Aglio E Olio', kr: '김치 알리오 올리오', price: 549,
+      desc: 'A Korean take on a famous Italian dish, bringing a touch of zing to its simplicity.',
+      img: '/assets/ig/reel-kimchi-spaghetti.jpg', imgSm: '/assets/ig/main-aglio-sm.jpg' },
+  ],
+  banchanOrder: ['shigeumchi', 'dangeun', 'geotjeori', 'trio'],
+  addons: [
+    { id: 'bibimbap-sauce', name: 'Bibimbap Sauce', kr: '비빔밥 소스', price: 30,
+      desc: 'Make your own bibimbap bowl to experience real Korean comfort food', imgSm: '/assets/logo/icon.svg' },
+    { id: 'soft-drinks', name: 'Soft Drinks', note: '(Mojo/Twing/Clemon)', priceLabel: 'MRP' },
+  ],
+  note: 'N.B.: Orders take 1-2 days to prepare and deliver. We thank you for your patience and understanding!',
+};
+
 window.BJ_BY_ID = Object.fromEntries(window.BJ_PRODUCTS.map(p => [p.id, p]));
+/* solo (150g) sizes, mains and priced add-ons can go in the basket too */
+window.BJ_PRODUCTS.forEach(p => {
+  if (p.priceSolo) window.BJ_BY_ID[p.id + '-solo'] = { ...p, id: p.id + '-solo', name: p.name + ' (solo, 150g)', price: p.priceSolo };
+});
+[...window.BJ_MENU.mains, ...window.BJ_MENU.addons.filter(a => a.price)].forEach(m => { window.BJ_BY_ID[m.id] = m; });

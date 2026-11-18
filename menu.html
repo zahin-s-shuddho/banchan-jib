@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Menu · Banchan Jib 반찬집</title>
   <meta name="description" content="This week's official menu — fresh cabbage kimchi, seasoned carrots, seasoned spinach and the Banchan Trio bundle. Small batches, made with care.">
-  <link rel="icon" href="/assets/logo/icon.svg">
+  <link rel="stylesheet" href="/js/vendor/drawably/style.css">
   <link rel="stylesheet" href="/css/style.css">
   <script>document.documentElement.classList.add('js')</script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -17,32 +20,62 @@
   <script defer src="/js/halmeoni-drag.js"></script>
   <script defer src="/js/main.js"></script>
   <script defer src="/js/menu.js"></script>
+  <script type="module" src="/js/drawn.js"></script>
 </head>
 <body>
 <main class="page">
 
-  <section class="section" style="padding-top:140px" data-doodles="4">
+  <section class="section menu-board-wrap" style="padding-top:150px" aria-labelledby="board-title">
     <div class="container">
-      <div class="sec-head" data-reveal style="position:relative">
-        <div class="halmeoni-inline" data-halmeoni="serving" style="width:min(150px,26vw);margin:0 auto 1rem"></div>
-        <span class="sec-eyebrow">공식 메뉴 · official menu</span>
-        <h2 class="sec-title" style="font-size:clamp(2.4rem,6vw,4.2rem)">This week's <em>table</em></h2>
-        <p class="sec-sub">To keep the highest quality and freshness, we've chosen to keep our menu intentionally small for now. More Korean side dishes will be added based on popular demand and ingredient availability, <em>In Shaa Allah</em>. Thank you for supporting our little kitchen.</p>
+      <div class="menu-board" id="menu-board" data-reveal>
+        <div class="mb-stamp" aria-hidden="true">정</div>
+        <h1 class="mb-title" id="board-title">Menu</h1>
+        <div class="mb-rule" aria-hidden="true"></div>
+        <div class="mb-cols">
+          <div class="mb-col">
+            <h2 class="mb-head">Main</h2>
+            <div data-mb="mains"></div>
+          </div>
+          <div class="mb-col">
+            <h2 class="mb-head">Banchan</h2>
+            <div class="mb-sizes" aria-hidden="true"><span>with main<br>(80g)</span><span>solo<br>(150g)</span></div>
+            <div data-mb="banchan"></div>
+          </div>
+        </div>
+        <h2 class="mb-head mb-head--center">Add-Ons</h2>
+        <div class="mb-addons" data-mb="addons"></div>
+        <p class="mb-note" data-mb="note"></p>
+        <p class="mb-source">Same menu as our <a href="https://www.instagram.com/p/DdN3hz5CZ-h/" target="_blank" rel="noopener" class="scribble">Instagram menu post</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:var(--s5)" data-doodles="2">
+    <div class="container">
+      <div class="sec-head" data-reveal style="position:relative;max-width:none;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap">
+        <div style="max-width:52rem">
+          <span class="sec-eyebrow">공식 메뉴 · official menu</span>
+          <h2 class="page-title">Meet the <em>banchan</em></h2>
+          <p class="sec-sub">Four banchan, kept small on purpose so every cup is fresh. Each comes as an 80g cup alongside a main, or a 150g solo cup. More Korean side dishes will join as demand and ingredients allow, <em>In Shaa Allah</em>. Add cups to your basket, then order by DM.</p>
+        </div>
+        <div class="halmeoni-inline" data-halmeoni="serving" style="width:min(190px,30vw)"></div>
       </div>
       <div class="menu-grid" id="menu-grid" data-reveal="stagger"></div>
     </div>
   </section>
 
-  <div class="ribbon ribbon-kimchi" data-items="DM to order|이번 주 반찬|Small batch — made fresh|정성 가득|Reserve before they're gone"></div>
-
-  <section class="section center" data-doodles="3">
-    <div class="container" data-reveal>
-      <div class="halmeoni-inline" data-halmeoni="idea" style="width:min(120px,22vw);margin:0 auto 1rem"></div>
-      <h2 class="sec-title">Can't decide?</h2>
-      <p class="sec-sub" style="margin-bottom:2rem">The Banchan Trio brings one cup of everything — the way a Korean table is meant to look.</p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="/products/banchan-trio.html" class="btn btn-primary">Meet the Trio · 세트</a>
-        <a href="/order.html" class="btn btn-outline">Go to order</a>
+  <section class="section" style="padding-top:0">
+    <div class="container info-split">
+      <div class="price-sheet" data-price-sheet data-reveal></div>
+      <div class="fact-sheet" data-reveal>
+        <dl>
+          <dt>Not sure what to pick?</dt><dd>The Banchan Trio is one cup of everything, the way a Korean table is meant to look.</dd>
+          <dt>Delivery</dt><dd>We deliver in Bangladesh and confirm your delivery day in the chat after you order.</dd>
+        </dl>
+        <div class="cta-actions" style="margin-top:2rem">
+          <a href="/products/banchan-trio.html" class="btn btn-sage">Meet the Trio</a>
+          <a href="/order.html" class="btn btn-primary">Go to order</a>
+        </div>
       </div>
     </div>
   </section>

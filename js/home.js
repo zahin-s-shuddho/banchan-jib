@@ -50,33 +50,11 @@
     /* ── plates drift out on scroll — one tween per plate, so peeling one
        (which kills its own tweens) never disturbs its sibling's tween ── */
     document.querySelectorAll('.hero-plate').forEach(pl => {
-      const dir = pl.classList.contains('p1') || pl.classList.contains('p2') ? -60 : 60;
+      const dir = 60;
       gsap.to(pl, {
         xPercent: dir, opacity: 0,
         scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom 40%', scrub: 0.8 },
       });
-    });
-
-    /* ── pinned horizontal week's batch (desktop only) ──
-       on tablet/mobile the section is a plain native horizontal scroll-snap
-       carousel, handled entirely by CSS (@media max-width:860px) — no JS
-       needed there, which sidesteps the class of bugs where matchMedia
-       can't auto-revert manual style mutations on breakpoint changes. */
-    ScrollTrigger.matchMedia({
-      '(min-width: 861px) and (prefers-reduced-motion: no-preference)': () => {
-        const track = document.querySelector('.week-track');
-        const stage = document.querySelector('.pin-stage');
-        if (!track) return;
-        const dist = () => track.scrollWidth - stage.clientWidth + 120;
-        gsap.to(track, {
-          x: () => -dist(),
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.pin-week', start: 'top top', end: () => '+=' + dist(),
-            pin: true, scrub: 0.7, invalidateOnRefresh: true,
-          },
-        });
-      },
     });
 
     /* ── letter unfold ── */

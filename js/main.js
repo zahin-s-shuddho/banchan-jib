@@ -146,30 +146,19 @@
               <img src="/assets/logo/icon.svg" alt="">
               <span class="word">Banchan Jib<small>반찬집</small></span>
             </div>
-            <p>${S.tagline}. Homemade Korean side dishes, made with care in Bangladesh.</p>
+            <p>Homemade Korean side dishes, made in small weekly batches and delivered in Bangladesh. We take orders by Instagram or Facebook DM.</p>
             <div class="social-row">
               <a href="https://instagram.com/${S.instagram}" target="_blank" rel="noopener" aria-label="Banchan Jib on Instagram">${igIcon}</a>
               <a href="https://facebook.com/${S.facebook}" target="_blank" rel="noopener" aria-label="Banchan Jib on Facebook">${fbIcon}</a>
             </div>
           </div>
-          <div>
-            <h4>The Table</h4>
-            <ul>
-              <li><a href="/menu.html">This week's menu</a></li>
-              <li><a href="/products/geotjeori.html">Geotjeori · 겉절이</a></li>
-              <li><a href="/products/dangeun-namul.html">Seasoned Carrots · 당근나물</a></li>
-              <li><a href="/products/shigeumchi-namul.html">Seasoned Spinach · 시금치나물</a></li>
-              <li><a href="/products/banchan-trio.html">The Banchan Trio</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4>The House</h4>
-            <ul>
-              <li><a href="/about.html">Our story</a></li>
-              <li><a href="/order.html">How to order</a></li>
-              <li><a href="${igDmHref}" target="_blank" rel="noopener" class="social-link">${igIcon}Instagram — DM to order</a></li>
-              <li><a href="${fbDmHref}" target="_blank" rel="noopener" class="social-link">${fbIcon}Facebook — DM to order</a></li>
-            </ul>
+          <div class="footer-order">
+            <h4>Order by DM</h4>
+            <p>Fill in the basket on our order page, or message us directly.</p>
+            <div class="dm-row">
+              <a href="${igDmHref}" target="_blank" rel="noopener" class="btn btn-cream social-link">${igIcon.replace('<svg','<svg width="19" height="19"')}Instagram</a>
+              <a href="${fbDmHref}" target="_blank" rel="noopener" class="btn btn-cream social-link">${fbIcon.replace('<svg','<svg width="19" height="19"')}Facebook</a>
+            </div>
           </div>
         </div>
         <div class="footer-bottom">
@@ -185,7 +174,7 @@
   function sprinkleDoodles() {
     const names = Object.keys(DOODLES);
     document.querySelectorAll('[data-doodles]').forEach((sec, si) => {
-      const n = +sec.dataset.doodles || 3;
+      const n = Math.min(2, +sec.dataset.doodles || 2);
       if (getComputedStyle(sec).position === 'static') sec.style.position = 'relative';
       for (let i = 0; i < n; i++) {
         const d = document.createElement('div');
@@ -229,6 +218,15 @@
     });
   }
   window.BJ_fillHalmeoni = fillHalmeoniInlines;
+
+  window.BJ_priceSheet = function () {
+    document.querySelectorAll('[data-price-sheet]').forEach(el => {
+      const P = window.BJ_PRODUCTS, single = P.filter(p => p.id !== 'trio').reduce((a, p) => a + p.price, 0);
+      const trio = window.BJ_BY_ID.trio;
+      el.innerHTML = `<h3>Prices</h3>` + P.map(p => `<div class="price-row"><span class="nm">${p.name}<small>${p.sub}</small></span><span class="lead"></span><span class="pr"><small>BDT</small>${p.price}${p.priceSolo ? `<small class="pr-solo"> · solo ${p.priceSolo}</small>` : ''}</span></div>`).join('')
+        + `<p class="price-note">The Trio is BDT ${single - trio.price} less than buying the three cups separately (BDT ${single}). Prices are for the 80g cup served with a main; the 150g solo cup is shown beside each. Orders take 1-2 days to prepare and deliver.</p>`;
+    });
+  };
 
   /* ───────────────────── toast ───────────────────── */
   window.BJToast = function (msg, kr) {
@@ -277,26 +275,15 @@
     });
   }
 
-  /* ───────────────────── ribbons ───────────────────── */
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes bj-marquee { to { transform: translateX(-50%); } }
-    .ribbon-track { animation: bj-marquee var(--dur,26s) linear infinite; }
-    .ribbon[data-reverse] .ribbon-track { animation-direction: reverse; }
-    @media (prefers-reduced-motion: reduce) { .ribbon-track { animation: none; } }`;
-  document.head.appendChild(style);
-
-  function buildRibbons() {
-    document.querySelectorAll('.ribbon[data-items]').forEach(r => {
-      const items = r.dataset.items.split('|');
-      const chunk = items.map(it => {
-        const isKr = /[ㄱ-힝]/.test(it);
-        return `<span class="${isKr ? 'kr' : ''}">${it}</span><span class="dot"></span>`;
-      }).join('');
-      // two identical halves → seamless -50% loop
-      const half = `<div class="ribbon-chunk">${chunk.repeat(3)}</div>`;
-      r.innerHTML = `<div class="ribbon-track" aria-hidden="true">${half}${half}</div>`;
-    });
+  /* hand-drawn SVG filters (rough ink edges) used by controls */
+  function buildFilters() {
+    const d = document.createElement('div');
+    d.className = 'svg-defs'; d.setAttribute('aria-hidden', 'true');
+    d.innerHTML = `<svg width="0" height="0" xmlns="http://www.w3.org/2000/svg"><defs>
+      <filter id="bj-rough" x="-10%" y="-25%" width="120%" height="150%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/></filter>
+      <filter id="bj-rough-sm" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.8"/></filter>
+    </defs></svg>`;
+    document.body.prepend(d);
   }
 
   /* ───────────────────── motion (GSAP) ───────────────────── */
@@ -329,8 +316,8 @@
       document.querySelectorAll('.dish-card, [data-tilt]').forEach(card => {
         card.addEventListener('mousemove', e => {
           const r = card.getBoundingClientRect();
-          const rx = ((e.clientY - r.top) / r.height - 0.5) * -12;
-          const ry = ((e.clientX - r.left) / r.width - 0.5) * 12;
+          const rx = ((e.clientY - r.top) / r.height - 0.5) * -5;
+          const ry = ((e.clientX - r.left) / r.width - 0.5) * 5;
           gsap.to(card, { rotateX: rx, rotateY: ry, transformPerspective: 800, duration: 0.4, ease: 'power2.out' });
         });
         card.addEventListener('mouseleave', () => {
@@ -416,9 +403,11 @@
     buildNav();
     buildDrawer();
     buildFooter();
-    buildRibbons();
+    buildFilters();
     sprinkleDoodles();
     fillHalmeoniInlines();
+    window.BJ_priceSheet();
+    document.querySelectorAll('[data-ico]').forEach(el => { el.innerHTML = DOODLES[el.dataset.ico] || ''; });
     BJCart.render();
     bindAddButtons();
     bindTransitions();

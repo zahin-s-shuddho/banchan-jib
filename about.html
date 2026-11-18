@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/logo/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Our Story · Banchan Jib 반찬집</title>
   <meta name="description" content="Banchan Jib is like a caring grandmother next door — quietly preparing flavourful Korean side dishes each week for busy people in Bangladesh.">
-  <link rel="icon" href="/assets/logo/icon.svg">
+  <link rel="stylesheet" href="/js/vendor/drawably/style.css">
   <link rel="stylesheet" href="/css/style.css">
   <script>document.documentElement.classList.add('js')</script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -16,17 +19,20 @@
   <script defer src="/js/halmeoni.js"></script>
   <script defer src="/js/halmeoni-drag.js"></script>
   <script defer src="/js/main.js"></script>
+  <script type="module" src="/js/drawn.js"></script>
 </head>
 <body>
 <main class="page">
 
   <!-- ═══════════ HERO ═══════════ -->
-  <section class="about-hero" data-doodles="5">
-    <div class="container" data-reveal>
-      <div class="halmeoni-inline" data-halmeoni="serious" style="width:min(190px,32vw);margin:0 auto 1rem"></div>
-      <span class="kr-serif">우리 이야기</span>
-      <h1>The grandmother <em>next door</em></h1>
-      <p class="sec-sub" style="max-width:560px;margin:1.5rem auto 0">Banchan Jib isn't a restaurant. It's a feeling — the one you get when someone quietly leaves food at your door because they know you've had a long day. We call her <b>할머니, Halmeoni</b> — meet her below, or find her wandering the site.</p>
+  <section class="about-hero" data-doodles="2">
+    <div class="container about-hero-grid" data-reveal>
+      <div>
+        <span class="kr-serif">우리 이야기</span>
+        <h1 class="page-title">The grandmother <em>next door</em></h1>
+        <p class="sec-sub">Banchan Jib makes homemade Korean side dishes in small weekly batches and delivers them in Bangladesh. We call our kitchen <b>할머니, Halmeoni</b>. Meet her here, or find her wandering the site.</p>
+      </div>
+      <div class="halmeoni-inline" data-halmeoni="serious" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -35,7 +41,7 @@
     <div class="container story-split">
       <div class="photo-stack" data-reveal>
         <img src="/assets/img/trio.jpg" alt="The Banchan Trio — three plates of kimchi, seasoned carrots and seasoned spinach" width="880" height="880" loading="lazy">
-        <div class="stamp">손으로<br>만든<br><span style="font-family:var(--menu);font-size:.6rem;letter-spacing:.1em">MADE BY HAND</span></div>
+        <div class="stamp">손으로<br>만든<br><span style="font-family:var(--menu);font-size:.8rem;letter-spacing:.1em">MADE BY HAND</span></div>
       </div>
       <div class="story-body" data-reveal="stagger">
         <p class="drop">If Banchan Jib were a person, she would be a warm, kind-hearted grandmother living next door to someone with a busy life.</p>
@@ -46,51 +52,18 @@
     </div>
   </section>
 
-  <div class="ribbon" data-items="위로 · comfort|정성 · care|진심 · honesty|밥심 · rice power|Made with Care, Shared with Love"></div>
 
-  <!-- ═══════════ HOW IT WORKS (sticky) ═══════════ -->
-  <section class="section" data-doodles="3">
-    <div class="container steps-wrap">
-      <div class="steps-sticky">
-        <span class="sec-eyebrow" style="margin-bottom:1rem">어떻게 · how it works</span>
-        <h2 class="sec-title" style="text-align:left">From our stove to your table</h2>
-        <p class="sec-sub" style="margin-top:1rem">Small weekly batches. Carefully selected local ingredients. A short trip from our kitchen to yours.</p>
+  <section class="section" data-doodles="2">
+    <div class="container">
+      <div class="sec-head" data-reveal>
+        <span class="sec-eyebrow">how we cook</span>
+        <h2 class="sec-title">Our kitchen's <em>rules</em></h2>
       </div>
-      <div class="steps-list" data-reveal="stagger">
-        <div class="step-card" style="position:relative">
-          <div class="halmeoni-inline" data-halmeoni="cooking" style="position:absolute;width:64px;top:-18px;right:-14px;transform:rotate(6deg)" aria-hidden="true"></div>
-          <div class="num">1</div>
-          <div>
-            <h3>We cook in small batches</h3>
-            <span class="kr">소량 생산</span>
-            <p>Each week we prepare just enough — so nothing sits around, and everything reaches you fresh.</p>
-          </div>
-        </div>
-        <div class="step-card">
-          <div class="num">2</div>
-          <div>
-            <h3>You reserve your cups</h3>
-            <span class="kr">주문</span>
-            <p>Pick your banchan, send us a DM, and your portion is set aside with your name on it.</p>
-          </div>
-        </div>
-        <div class="step-card" style="position:relative">
-          <div class="halmeoni-inline" data-halmeoni="delivering" style="position:absolute;width:70px;top:-20px;right:-14px;transform:rotate(-6deg)" aria-hidden="true"></div>
-          <div class="num">3</div>
-          <div>
-            <h3>It arrives like a care package</h3>
-            <span class="kr">배달</span>
-            <p>Sealed cups, a handwritten note, and the smell of a Korean home kitchen — delivered in Bangladesh.</p>
-          </div>
-        </div>
-        <div class="step-card">
-          <div class="num">4</div>
-          <div>
-            <h3>You eat well, even on busy days</h3>
-            <span class="kr">맛있게 드세요</span>
-            <p>Open the fridge, add a cup or two next to warm rice, and dinner takes care of itself.</p>
-          </div>
-        </div>
+      <div class="rules" data-reveal="stagger">
+        <div class="info-card"><span class="kr">소량 생산</span><h3>Small batches</h3><p>We cook just enough each week, so nothing sits around and everything reaches you fresh.</p></div>
+        <div class="info-card"><span class="kr">진심</span><h3>Local ingredients</h3><p>Carefully selected, no shortcuts and no fuss.</p></div>
+        <div class="info-card"><span class="kr">정성</span><h3>Made by hand</h3><p>Every cup is seasoned by hand, tasted, and packed like it is going to family.</p></div>
+        <div class="info-card"><span class="kr">주문</span><h3>Simple ordering</h3><p>Order by Instagram or Facebook DM. See <a href="/order.html" class="scribble">how ordering works</a>.</p></div>
       </div>
     </div>
   </section>
@@ -111,41 +84,21 @@
         <h2 class="sec-title">Where the table is heading</h2>
         <p class="sec-sub">Our long-term dream is to be the go-to home for Korean side dishes in Bangladesh — for locals discovering banchan, and for Koreans far from home who miss theirs.</p>
       </div>
-      <div class="value-grid" data-reveal="stagger">
-        <div class="flip" tabindex="0" role="button" aria-label="More side dishes — flip">
-          <div class="flip-inner">
-            <div class="flip-face flip-front"><span class="kr">반찬</span><h3>More banchan</h3></div>
-            <div class="flip-face flip-back"><p>New side dishes added by popular demand and ingredient availability, In Shaa Allah.</p></div>
-          </div>
-        </div>
-        <div class="flip" tabindex="0" role="button" aria-label="Korean snacks — flip">
-          <div class="flip-inner">
-            <div class="flip-face flip-front"><span class="kr">간식</span><h3>Korean snacks</h3></div>
-            <div class="flip-face flip-back"><p>Hotteok, tteokbokki, kimchi jeon, pajeon… the street-food classics, homemade.</p></div>
-          </div>
-        </div>
-        <div class="flip" tabindex="0" role="button" aria-label="Lunch boxes — flip">
-          <div class="flip-inner">
-            <div class="flip-face flip-front"><span class="kr">도시락</span><h3>Lunch boxes</h3></div>
-            <div class="flip-face flip-back"><p>Full Korean dosirak — rice, banchan and a main — packed for your workday.</p></div>
-          </div>
-        </div>
-        <div class="flip" tabindex="0" role="button" aria-label="Always reliable — flip">
-          <div class="flip-inner">
-            <div class="flip-face flip-front"><span class="kr">언제나</span><h3>Always there</h3></div>
-            <div class="flip-face flip-back"><p>Something you can rely on when you're having a tough time and can't cook.</p></div>
-          </div>
-        </div>
+      <div class="rules" data-reveal="stagger">
+        <div class="plan-card"><span class="tagline">not on the menu yet</span><span class="kr">반찬</span><h3>More banchan</h3><p>New side dishes added by popular demand and ingredient availability, In Shaa Allah.</p></div>
+        <div class="plan-card"><span class="tagline">not on the menu yet</span><span class="kr">간식</span><h3>Korean snacks</h3><p>Hotteok, tteokbokki, kimchi jeon, pajeon… the street-food classics, homemade.</p></div>
+        <div class="plan-card"><span class="tagline">not on the menu yet</span><span class="kr">도시락</span><h3>Lunch boxes</h3><p>Full Korean dosirak — rice, banchan and a main — packed for your workday.</p></div>
+        <div class="plan-card"><span class="tagline">not on the menu yet</span><span class="kr">언제나</span><h3>Always there</h3><p>Something you can rely on when you're having a tough time and can't cook.</p></div>
       </div>
     </div>
   </section>
 
   <!-- ═══════════ CTA ═══════════ -->
-  <section class="section center">
-    <div class="container" data-reveal>
-      <h2 class="sec-title">Come, sit at the table</h2>
-      <p class="sec-sub" style="margin-bottom:2rem">Fresh batches are ready for this week's orders.</p>
-      <a href="/menu.html" class="btn btn-primary" style="font-size:1.05rem;padding:1.1rem 2.5rem">See the menu · 어서오세요</a>
+  <section class="section">
+    <div class="container cta-band" data-reveal>
+      <div><h2 class="sec-title">Come, sit at the table</h2>
+      <p class="sec-sub">This week's batch is ready for orders.</p></div>
+      <a href="/menu.html" class="btn btn-primary btn-lg">See the menu</a>
     </div>
   </section>
 

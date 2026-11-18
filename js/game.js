@@ -3,7 +3,7 @@
    Catch falling banchan in your bowl. Drop 3 and dinner's over.
    ══════════════════════════════════════════════════════════ */
 (function () {
-  const COLORS = { brown: '#5A3E2B', sage: '#7e8d63', kimchi: '#8b1400', sesame: '#c7b8a3' };
+  const COLORS = { brown: '#46301f', sage: '#6f7e55', kimchi: '#8b1400', sesame: '#c7b8a3', paper: '#fcf8ef', ink: '#2a2420' };
 
   function svgImage(name, color, size = 54) {
     const raw = window.BJ_DOODLES[name]
@@ -110,7 +110,7 @@
         /* table cloth stripes */
         ctx.save();
         if (shake > 0) { ctx.translate((Math.random() - .5) * shake, (Math.random() - .5) * shake); shake *= 0.85; }
-        ctx.fillStyle = 'rgba(168,182,154,.12)';
+        ctx.fillStyle = 'rgba(111,126,85,.07)';
         for (let i = 0; i < W; i += 48) ctx.fillRect(i, 0, 24, H);
 
         /* spawn */
@@ -165,7 +165,7 @@
         for (let i = 0; i < 3; i++) {
           ctx.beginPath();
           ctx.arc(W - 26 - i * 26, H - 22, 8, 0, Math.PI * 2);
-          ctx.fillStyle = i < 3 - missed ? COLORS.kimchi : 'rgba(90,62,43,.18)';
+          ctx.fillStyle = i < 3 - missed ? COLORS.kimchi : 'rgba(70,48,31,.28)';
           ctx.fill();
         }
 
@@ -174,9 +174,15 @@
           msgT--;
           ctx.font = '700 22px Quicksand, sans-serif';
           ctx.textAlign = 'center';
-          ctx.fillStyle = COLORS.brown;
           ctx.globalAlpha = Math.min(1, msgT / 25);
-          ctx.fillText(msg, W / 2, 70);
+          /* paper slip behind the words so they stay readable over falling items */
+          const tw = ctx.measureText(msg).width;
+          ctx.fillStyle = COLORS.paper;
+          ctx.fillRect(W / 2 - tw / 2 - 14, 46, tw + 28, 36);
+          ctx.strokeStyle = COLORS.brown; ctx.lineWidth = 2;
+          ctx.strokeRect(W / 2 - tw / 2 - 14, 46, tw + 28, 36);
+          ctx.fillStyle = COLORS.ink;
+          ctx.fillText(msg, W / 2, 71);
           ctx.globalAlpha = 1;
         }
         ctx.restore();

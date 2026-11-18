@@ -24,7 +24,8 @@
         <span class="kr-serif">${p.kr}</span><span class="kr-read">${p.krRead}</span>
         <h1>${p.name}</h1>
         <p class="pd-sub">${p.sub}</p>
-        <p class="pd-price">BDT ${p.price} <small>/ cup${p.id === 'trio' ? ' set' : ''}</small></p>
+        <p class="pd-price">BDT ${p.price} <small>/ 80g ${p.id === 'trio' ? 'set' : 'cup'} with a main</small></p>${p.priceSolo ? `<p class="pd-save">Solo 150g ${p.id === 'trio' ? 'set' : 'cup'}: BDT ${p.priceSolo}. Ask for solo in your DM.</p>` : ''}
+        ${p.id==='trio'?`<p class="pd-save">Saves BDT ${window.BJ_PRODUCTS.filter(x=>x.id!=='trio').reduce((a,x)=>a+x.price,0)-p.price} compared with three separate cups.</p>`:''}
         <p class="pd-story">${p.story}</p>
         <div class="pd-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>
         <div class="qty-row">
@@ -35,6 +36,7 @@
           </div>
           <button class="btn btn-primary" data-add="${p.id}" data-qty-from="#pd-qty">Add to basket · 담기</button>
         </div>
+        <p class="pd-how"><b>How to get it:</b> add it to your basket, then send us the order note by Instagram or Facebook DM. One cup is one side-dish portion. We deliver in Bangladesh and confirm your delivery day in the chat.</p>
         <div class="meter-block" id="pd-meters">
           ${['spice', 'crunch', 'garlic'].map(k => `
             <div class="meter-row">

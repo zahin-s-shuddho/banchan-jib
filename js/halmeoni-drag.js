@@ -211,9 +211,6 @@
       ['.social-row a, a.social-link', 'wave', 'Come find us online!'],
       ['.nav-logo', 'wave', 'Welcome back to Banchan Jib.'],
       ['.cart-btn', 'happy', "Ooh, checking your basket? Let's see what you've picked."],
-      ['.footer-main a[href="/order.html"]', 'delivering', "Let's get your order on its way."],
-      ['.footer-main a[href="/about.html"]', 'wave', 'Let me tell you a little about our kitchen.'],
-      ['.footer-main a[href^="/products/"], .footer-main a[href="/menu.html"]', 'serving', 'Fresh out of the kitchen, just for you.'],
       ['.btn-primary', 'happy', "Go on, I think you'll like this."],
       ['.btn-sage', 'serving', "There's more where that came from."],
       ['.btn-outline', 'idea', 'Want to know more? Go ahead.'],
@@ -226,7 +223,7 @@
     document.addEventListener('mouseover', e => {
       for (const [sel, m, reason] of HOVER_MAP) {
         if (e.target.closest(sel)) {
-          if (sel === '.cart-btn' || sel.includes('menu.html')) basketSadLock = false;
+          if (sel === '.cart-btn') basketSadLock = false;
           return react_(m, reason);
         }
       }
